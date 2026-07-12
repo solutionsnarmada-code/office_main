@@ -1,0 +1,715 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>narmadasolution.com | Premium Business & Tech</title>
+    
+    <!-- Fonts: Montserrat (Headers/Nav) & Nunito Sans (Body) -->
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700;800;900&family=Nunito+Sans:wght@300;400;600&display=swap" rel="stylesheet">
+    
+    <style>
+        :root {
+            --black: #000000;
+            --bright-red: #FF0000;
+            --white: #FFFFFF;
+            --subtle-border: rgba(255, 255, 255, 0.08);
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { background-color: var(--black); color: var(--white); font-family: 'Nunito Sans', sans-serif; overflow-x: hidden; scroll-behavior: smooth; }
+
+        /* --- GLOBAL UNIFORM HEADINGS (EXCEPT HERO) --- */
+        .about-heading, .section-title, .workflow-title, .benefits-title, .cta-title, .contact-title {
+            font-family: 'Montserrat', sans-serif !important;
+            font-size: 42px !important;
+            font-weight: 900 !important;
+            text-align: left !important;
+            letter-spacing: -1px !important;
+            line-height: 1.1 !important;
+            margin-bottom: 25px !important;
+        }
+
+        /* --- HEADER --- */
+        header { 
+            display: flex; justify-content: space-between; align-items: center; 
+            padding: 0 50px; height: 75px; background-color: var(--black); 
+            border-bottom: 1px solid var(--subtle-border); position: fixed; 
+            top: 0; left: 0; width: 100%; z-index: 9999; 
+        }
+        .brand-text { font-family: 'Montserrat', sans-serif; font-weight: 600; font-size: 30px; color: var(--white); text-decoration: none; letter-spacing: -0.5px; }
+        .brand-text span { color: var(--bright-red); }
+        nav ul { display: flex; list-style: none; align-items: center; gap: 36px; }
+        nav ul li a { text-decoration: none; color: var(--white); font-family: 'Montserrat', sans-serif; font-weight: 400; font-size: 17px; transition: 0.3s; }
+        .nav-cta { padding: 10px 24px; background-color: var(--bright-red); color: var(--white); border-radius: 12px; font-weight: 600; border: 1px solid var(--bright-red); text-decoration: none; transition: 0.3s; }
+        .nav-cta:hover { background-color: var(--black); border-color: var(--white); }
+
+        /* --- HERO SECTION --- */
+        .hero { 
+            height: 100vh; display: flex; flex-direction: column; 
+            justify-content: center; align-items: center; text-align: center; padding: 0 10%; 
+        }
+        .hero h1 { font-family: 'Montserrat', sans-serif; font-size: 4.8rem; font-weight: 900; line-height: 1.05; letter-spacing: -2px; margin-bottom: 30px; }
+        .business-animated { 
+            display: inline-block; background: linear-gradient(90deg, #FF0000 0%, #FF0000 40%, #FFFFFF 50%, #FF0000 60%, #FF0000 100%); 
+            background-size: 200% 100%; -webkit-background-clip: text; -webkit-text-fill-color: transparent; animation: sweep 12s linear infinite; 
+        }
+        @keyframes sweep { 0% { background-position: 200% 0; } 100% { background-position: 0% 0; } }
+        .hero p { font-size: 1.2rem; font-weight: 300; max-width: 850px; margin-bottom: 50px; line-height: 1.8; opacity: 0.9; }
+        .cta-group { display: flex; gap: 20px; }
+        .btn { font-family: 'Montserrat', sans-serif; font-weight: 800; font-size: 0.85rem; text-transform: uppercase; letter-spacing: 2px; padding: 20px 50px; text-decoration: none; transition: 0.3s; border-radius: 12px; }
+        .btn-red { background-color: var(--bright-red); color: var(--white); }
+        .btn-red:hover { background-color: var(--white); color: var(--black); transform: translateY(-4px); }
+        .btn-outline { border: 2px solid var(--white); color: var(--white); }
+        .btn-outline:hover { background-color: var(--bright-red); border-color: var(--bright-red); transform: translateY(-4px); }
+
+        /* --- MARQUEE SECTION --- */
+        .marquee-section {
+            width: 100%;
+            height: 70px;
+            background-color: #000000;
+            border-top: 1px solid var(--subtle-border);
+            border-bottom: 1px solid var(--subtle-border);
+            display: flex;
+            align-items: center;
+            overflow: hidden;
+            position: relative;
+        }
+        .expertise-label {
+            background: #000000;
+            padding: 0 40px;
+            font-family: 'Montserrat', sans-serif;
+            font-weight: 800;
+            font-size: 14px;
+            letter-spacing: 3px;
+            color: #555;
+            z-index: 10;
+            position: relative;
+        }
+        .marquee-content { display: flex; white-space: nowrap; animation: marqueeScroll 40s linear infinite; }
+        .marquee-item { display: flex; align-items: center; margin-right: 60px; font-family: 'Montserrat', sans-serif; font-size: 14px; font-weight: 600; color: var(--white); }
+        .marquee-item svg { margin-right: 12px; width: 18px; color: var(--bright-red); }
+        @keyframes marqueeScroll { 0% { transform: translateX(0); } 100% { transform: translateX(-50%); } }
+
+        /* --- ABOUT SECTION --- */
+        .about-container { background-color: var(--black); padding: 120px 8%; color: var(--white); }
+        .about-wrapper { display: flex; align-items: center; justify-content: space-between; gap: 80px; max-width: 1300px; margin: 0 auto; }
+        .about-text { flex: 1.2; text-align: left; }
+        .highlight-red { color: var(--bright-red); }
+        .about-description { font-family: 'Nunito Sans', sans-serif; font-size: 19px; line-height: 1.8; color: rgba(255, 255, 255, 0.85); margin-bottom: 50px; }
+        .stats-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 50px; }
+        .stat-number-wrapper { font-family: 'Montserrat', sans-serif; font-size: 42px; font-weight: 900; color: var(--bright-red); margin-bottom: 8px; }
+        .stat-label { font-family: 'Montserrat', sans-serif; font-size: 14px; font-weight: 600; text-transform: uppercase; letter-spacing: 2px; }
+        .about-visual { flex: 0.8; display: flex; justify-content: flex-end; }
+        .image-frame { position: relative; width: 100%; max-width: 480px; border-radius: 12px; overflow: hidden; border: 1px solid rgba(255, 255, 255, 0.1); }
+        .image-frame img { width: 100%; display: block; filter: grayscale(10%) brightness(0.9); }
+        .image-branding { position: absolute; bottom: 0; left: 0; width: 100%; background-color: var(--white); padding: 25px; text-align: center; }
+        .image-branding h4 { font-family: 'Montserrat', sans-serif; font-weight: 900; font-size: 24px; color: var(--black); margin-bottom: 4px; }
+        .image-branding h4 span { color: var(--bright-red); }
+        .image-branding p { font-family: 'Nunito Sans', sans-serif; font-size: 12px; font-weight: 700; color: #333; text-transform: uppercase; letter-spacing: 1px; }
+
+        @media (max-width: 1024px) { 
+            .hero h1 { font-size: 2.8rem; } 
+            .about-wrapper { flex-direction: column; gap: 60px; } 
+            header { padding: 0 20px; }
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <a href="#" class="brand-text">narmadasolution<span>.com</span></a>
+        <nav>
+            <ul>
+                <li><a href="#about">About Us</a></li>
+                <li><a href="#services">Services</a></li>
+                <li><a href="#contact">Support</a></li>
+                <li><a href="#contact" class="nav-cta">Contact Us</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <!-- HERO SECTION -->
+    <section class="hero">
+        <h1>Create a website<br>as brilliant as your <span class="business-animated">Business</span></h1>
+        <p>
+            Your journey to business excellence begins here. Discover a feature-rich ecosystem for 
+            <strong>EPF, ESI, and Digital Signatures</strong>. We offer high-end 
+            Website Development and 24/7 technical support.
+        </p>
+        <div class="cta-group">
+            <a href="#services" class="btn btn-red">Access Services</a>
+            <a href="#contact" class="btn btn-outline">Book a Demo</a>
+        </div>
+    </section>
+
+    <!-- EXPERTISE MARQUEE -->
+    <div class="marquee-section">
+        <div class="expertise-label">EXPERTISE:</div>
+        <div class="marquee-content">
+            <div class="marquee-item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"></polyline></svg> Web Development</div>
+            <div class="marquee-item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"></polyline></svg> Website Development</div>
+            <div class="marquee-item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"></polyline></svg> E-commerce Development</div>
+            <div class="marquee-item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"></polyline></svg> ESI Services</div>
+            <div class="marquee-item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"></polyline></svg> EPF Services</div>
+            <div class="marquee-item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"></polyline></svg> Digital Signature</div>
+            <!-- Duplicated for Loop -->
+            <div class="marquee-item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"></polyline></svg> Web Development</div>
+            <div class="marquee-item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"></polyline></svg> Website Development</div>
+            <div class="marquee-item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"></polyline></svg> E-commerce Development</div>
+            <div class="marquee-item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"></polyline></svg> ESI Services</div>
+            <div class="marquee-item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"></polyline></svg> EPF Services</div>
+            <div class="marquee-item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"></polyline></svg> Digital Signature</div>
+        </div>
+    </div>
+
+    <!-- ABOUT SECTION -->
+    <section id="about" class="about-container">
+        <div class="about-wrapper">
+            <div class="about-text">
+                <h2 class="about-heading">About <span class="highlight-red">Narmada Solution</span></h2>
+                <p class="about-description">
+                    <span class="highlight-red">Narmada Solution</span> is a premier trust provider dedicated to simplifying complex business processes. 
+                    Our mission is to empower entrepreneurs and organizations by managing their operational and 
+                    digital needs, ensuring they remain compliant and competitive in a digital-first economy.
+                </p>
+                <div class="stats-grid">
+                    <div class="stat-item">
+                        <div class="stat-number-wrapper"><span class="count" data-target="100">0</span>+</div>
+                        <p class="stat-label">Businesses Served</p>
+                    </div>
+                    <div class="stat-item">
+                        <div class="stat-number-wrapper"><span class="count" data-target="98">0</span>%</div>
+                        <p class="stat-label">Client Satisfaction</p>
+                    </div>
+                    <div class="stat-item">
+                        <div class="stat-number-wrapper"><span class="count" data-target="10">0</span>+</div>
+                        <p class="stat-label">Professional Services</p>
+                    </div>
+                    <div class="stat-item">
+                        <div class="stat-number-wrapper"><span class="count" data-target="24">0</span>/5</div>
+                        <p class="stat-label">Customer Support</p>
+                    </div>
+                </div>
+            </div>
+            <div class="about-visual">
+                <div class="image-frame">
+                    <img src="https://images.unsplash.com/photo-1522071820081-009f0129c71c?auto=format&fit=crop&q=80&w=1000" alt="Team">
+                    <div class="image-branding">
+                        <h4>NARMADA <span>SOLUTION</span></h4>
+                        <p>Business Compliance & Digital Solutions</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- SERVICES SECTION -->
+    <section id="services" class="services-list-container">
+        <div class="services-header">
+            <h2 class="section-title">Everything Your <span class="highlight-red">Business Needs</span></h2>
+            <p class="section-subtitle">
+                Premium end-to-end solutions designed to handle complexity while you focus on growth.
+            </p>
+        </div>
+
+        <div class="services-list">
+            <!-- Service 01 -->
+            <div class="service-row">
+                <div class="service-number">01</div>
+                <div class="service-main">
+                    <div class="service-title-flex">
+                        <div class="service-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg></div>
+                        <h3>EPF & ESI Services</h3>
+                    </div>
+                    <p class="service-desc">Comprehensive compliance management ensuring your organization meets all regulatory standards without the administrative burden.</p>
+                </div>
+                <div class="service-arrow">?</div>
+                <div class="hover-bg"> → </div>
+            </div>
+
+            <!-- Service 02 -->
+            <div class="service-row">
+                <div class="service-number">02</div>
+                <div class="service-main">
+                    <div class="service-title-flex">
+                        <div class="service-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2a10 10 0 1 0 10 10 4 4 0 0 1-8 0 4 4 0 0 0-8 0 4 4 0 0 1-8 0 10 10 0 1 0 10-10z"/><circle cx="12" cy="12" r="3"/></svg></div>
+                        <h3>Digital Signature</h3>
+                    </div>
+                    <p class="service-desc">Class 3 DSC for Individuals and Organizations. Fast processing for e-tendering, income tax, and GST filing requirements.</p>
+                </div>
+                <div class="service-arrow"> → </div>
+                <div class="hover-bg"></div>
+            </div>
+
+            <!-- Service 03 -->
+            <div class="service-row">
+                <div class="service-number">03</div>
+                <div class="service-main">
+                    <div class="service-title-flex">
+                        <div class="service-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><ellipse cx="12" cy="5" rx="9" ry="3"/><path d="M21 12c0 1.66-4 3-9 3s-9-1.34-9-3"/><path d="M3 5v14c0 1.66 4 3 9 3s9-1.34 9-3V5"/></svg></div>
+                        <h3>Data Entry</h3>
+                    </div>
+                    <p class="service-desc">Accurate, confidential, and high-speed data processing services tailored to your specific digital formatting and database needs.</p>
+                </div>
+                <div class="service-arrow"> → </div>
+                <div class="hover-bg"></div>
+            </div>
+
+            <!-- Service 04 -->
+            <div class="service-row">
+                <div class="service-number">04</div>
+                <div class="service-main">
+                    <div class="service-title-flex">
+                        <div class="service-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="3" width="20" height="14" rx="2"/><line x1="8" y1="21" x2="16" y2="21"/><line x1="12" y1="17" x2="12" y2="21"/></svg></div>
+                        <h3>Website Support</h3>
+                    </div>
+                    <p class="service-desc">24/7 maintenance, security updates, and performance optimization to ensure your existing web presence remains online and healthy.</p>
+                </div>
+                <div class="service-arrow"> → </div>
+                <div class="hover-bg"></div>
+            </div>
+
+            <!-- Service 05 -->
+            <div class="service-row">
+                <div class="service-number">05</div>
+                <div class="service-main">
+                    <div class="service-title-flex">
+                        <div class="service-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 19l7-7 3 3-7 7-3-3z"/><path d="M18 13l-1.5-7.5L2 2l3.5 14.5L13 18l5-5z"/></svg></div>
+                        <h3>Website Design</h3>
+                    </div>
+                    <p class="service-desc">Bespoke, high-converting designs that capture your brand essence and engage your target audience across all modern devices.</p>
+                </div>
+                <div class="service-arrow"> → </div>
+                <div class="hover-bg"></div>
+            </div>
+
+            <!-- Service 06 -->
+            <div class="service-row">
+                <div class="service-number">06</div>
+                <div class="service-main">
+                    <div class="service-title-flex">
+                        <div class="service-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="9" cy="21" r="1"/><circle cx="20" cy="21" r="1"/><path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"/></svg></div>
+                        <h3>E-commerce</h3>
+                    </div>
+                    <p class="service-desc">Full-stack development for online stores, including secure payment gateways, inventory management, and smooth user journeys.</p>
+                </div>
+                <div class="service-arrow"> → </div>
+                <div class="hover-bg"></div>
+            </div>
+        </div>
+    </section>
+
+    <style>
+        .services-list-container { background-color: #000000; padding: 140px 10%; color: #ffffff; }
+        .services-header { max-width: 800px; margin-bottom: 80px; text-align: left; }
+        .section-subtitle { font-family: 'Nunito Sans', sans-serif; font-size: 20px; line-height: 1.8; color: rgba(255, 255, 255, 0.6); }
+        .services-list { border-top: 1px solid rgba(255, 255, 255, 0.1); }
+        .service-row { display: flex; align-items: center; padding: 60px 20px; border-bottom: 1px solid rgba(255, 255, 255, 0.1); position: relative; cursor: pointer; transition: all 0.4s ease; overflow: hidden; }
+        .hover-bg { position: absolute; left: 0; bottom: 0; width: 0; height: 100%; background-color: rgba(255, 0, 0, 0.01); border-left: 0px solid #FF0000; transition: all 0.4s ease; z-index: 1; }
+        .service-row:hover .hover-bg { width: 100%; border-left: 4px solid #FF0000; }
+        .service-number { font-family: 'Montserrat', sans-serif; font-size: 16px; font-weight: 800; color: #FF0000; margin-right: 50px; z-index: 2; }
+        .service-main { flex: 1; z-index: 2; }
+        .service-title-flex { display: flex; align-items: center; gap: 20px; margin-bottom: 10px; transition: transform 0.4s ease; }
+        .service-row:hover .service-title-flex { transform: translateX(15px); }
+        .service-icon { color: #FF0000; width: 32px; height: 32px; }
+        .service-main h3 { font-family: 'Montserrat', sans-serif; font-size: 32px; font-weight: 700; transition: color 0.3s ease; }
+        .service-desc { font-family: 'Nunito Sans', sans-serif; font-size: 17px; color: rgba(255, 255, 255, 0.5); max-width: 800px; line-height: 1.6; padding-left: 52px; transition: all 0.4s ease; }
+        .service-row:hover .service-desc { color: #ffffff; transform: translateX(15px); }
+        .service-arrow { font-size: 32px; color: rgba(255, 255, 255, 0.2); transition: all 0.4s ease; z-index: 2; }
+        .service-row:hover .service-arrow { color: #FF0000; transform: translateX(10px); }
+        @media (max-width: 768px) {
+            .service-row { flex-direction: column; align-items: flex-start; padding: 40px 10px; }
+            .service-number { margin-bottom: 20px; }
+            .service-main h3 { font-size: 24px; }
+            .service-desc { padding-left: 0; margin-top: 15px; }
+            .service-arrow { display: none; }
+        }
+    </style>
+
+    <!-- WORKFLOW SECTION -->
+    <section class="workflow-container">
+        <div class="workflow-header">
+            <h2 class="workflow-title">Our <span class="highlight-red">Workflow</span></h2>
+            <p class="workflow-subtitle">A streamlined process built for execution, precision, and clarity.</p>
+        </div>
+        <div class="workflow-grid-wrapper">
+            <div class="connector-line"></div>
+            <div class="workflow-grid">
+                <div class="workflow-step">
+                    <div class="step-box">1</div>
+                    <h3>Discovery</h3>
+                    <p>We analyze your business compliance and digital setup to uncover key requirements.</p>
+                </div>
+                <div class="workflow-step">
+                    <div class="step-box">2</div>
+                    <h3>Strategy</h3>
+                    <p>Tailored structural blueprints designed to safely optimize operations and web layouts.</p>
+                </div>
+                <div class="workflow-step">
+                    <div class="step-box">3</div>
+                    <h3>Execution</h3>
+                    <p>Our professionals implement legal filings and premium development modules.</p>
+                </div>
+                <div class="workflow-step">
+                    <div class="step-box">4</div>
+                    <h3>Support</h3>
+                    <p>Continuous monitoring, updates, and 24/7 client backup for flawless scaling.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <style>
+        .workflow-container { background-color: #000000; padding: 140px 10%; color: #ffffff; text-align: left; position: relative; }
+        .workflow-header { max-width: 700px; margin: 0 0 100px 0; text-align: left; }
+        .workflow-subtitle { font-family: 'Nunito Sans', sans-serif; font-size: 19px; color: rgba(255, 255, 255, 0.6); line-height: 1.6; }
+        .workflow-grid-wrapper { position: relative; max-width: 1400px; margin: 0; }
+        .connector-line { position: absolute; top: 40px; left: 10%; right: 10%; height: 1px; background-color: rgba(255, 255, 255, 0.1); z-index: 1; }
+        .workflow-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 40px; position: relative; z-index: 2; }
+        .workflow-step { display: flex; flex-direction: column; align-items: flex-start; padding: 0 15px; text-align: left; }
+        .step-box { width: 80px; height: 80px; background-color: #FF0000; color: #ffffff; font-family: 'Montserrat', sans-serif; font-size: 28px; font-weight: 900; display: flex; align-items: center; justify-content: center; border-radius: 14px; margin-bottom: 40px; transition: transform 0.3s ease, background-color 0.3s ease; }
+        .workflow-step:hover .step-box { transform: translateY(-4px); background-color: #ffffff; color: #000000; }
+        .workflow-step h3 { font-family: 'Montserrat', sans-serif; font-size: 22px; font-weight: 700; margin-bottom: 18px; color: #ffffff; }
+        .workflow-step p { font-family: 'Nunito Sans', sans-serif; font-size: 16px; line-height: 1.7; color: rgba(255, 255, 255, 0.5); transition: color 0.3s ease; }
+        .workflow-step:hover p { color: #ffffff; }
+        @media (max-width: 1024px) {
+            .workflow-grid { grid-template-columns: repeat(2, 1fr); gap: 60px; }
+            .connector-line { display: none; }
+        }
+        @media (max-width: 600px) {
+            .workflow-grid { grid-template-columns: 1fr; }
+        }
+    </style>
+
+    <!-- WHY CHOOSE US SECTION -->
+    <section id="why-choose" class="benefits-container">
+        <div class="benefits-header">
+            <h2 class="benefits-title">Why Businesses Choose <br><span class="highlight-red">Narmada Solution</span></h2>
+            <p class="benefits-subtitle">Uncompromising quality, transparency, and technical excellence.</p>
+        </div>
+
+        <div class="benefits-grid">
+            <!-- Benefit 01 -->
+            <div class="benefit-item">
+                <div class="benefit-accent"></div> 
+                <div class="benefit-icon">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon></svg>
+                </div>
+                <h3>Experienced</h3>
+                <p>Our team brings years of domain expertise in compliance and technology, ensuring your business stays ahead of regulatory changes.</p>
+            </div>
+
+            <!-- Benefit 02 -->
+            <div class="benefit-item">
+                <div class="benefit-accent"></div>
+                <div class="benefit-icon">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path><circle cx="9" cy="7" r="4"></circle><path d="M23 21v-2a4 4 0 0 0-3-3.87"></path></svg>
+                </div>
+                <h3>Reliable</h3>
+                <p>Consistent support and transparent communication at every step. We pride ourselves on being a partner you can trust 24/7.</p>
+            </div>
+
+            <!-- Benefit 03 -->
+            <div class="benefit-item">
+                <div class="benefit-accent"></div>
+                <div class="benefit-icon">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M18.178 8c5.096 0 5.096 8 0 8a5.177 5.177 0 0 1-3.678-1.5L9.5 9.5A5.177 5.177 0 0 0 5.822 8c-5.096 0-5.096 8 0 8a5.177 5.177 0 0 0 3.678-1.5l5-5A5.177 5.177 0 0 1 18.178 8z"></path></svg>
+                </div>
+                <h3>End-to-End</h3>
+                <p>From complex legal filings to digital growth and support, we manage your entire business lifecycle seamlessly.</p>
+            </div>
+
+            <!-- Benefit 04 -->
+            <div class="benefit-item">
+                <div class="benefit-accent"></div>
+                <div class="benefit-icon">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="2" y="6" width="20" height="12" rx="2"></rect><circle cx="12" cy="12" r="2"></circle><path d="M6 12h.01M18 12h.01"></path></svg>
+                </div>
+                <h3>Affordable</h3>
+                <p>Premium quality services priced strategically for growing businesses. High-end solutions shouldn't break your budget.</p>
+            </div>
+        </div>
+    </section>
+
+    <style>
+        .benefits-container { background-color: #000000; padding: 140px 10%; color: #ffffff; }
+        .benefits-header { margin-bottom: 100px; max-width: 800px; margin-left: 0; text-align: left; }
+        .benefits-subtitle { font-family: 'Nunito Sans', sans-serif; font-size: 20px; color: rgba(255, 255, 255, 0.6); max-width: 600px; margin-left: 0; }
+        .benefits-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 80px; }
+        .benefit-item { position: relative; padding-left: 30px; display: flex; flex-direction: column; align-items: flex-start; text-align: left; transition: all 0.4s ease; }
+        .benefit-accent { position: absolute; left: 0; top: 0; width: 2px; height: 40px; background-color: #FF0000; transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1); }
+        .benefit-item:hover .benefit-accent { height: 100%; }
+        .benefit-icon { color: #FF0000; margin-bottom: 30px; transition: transform 0.4s ease; }
+        .benefit-icon svg { width: 40px; height: 40px; }
+        .benefit-item:hover .benefit-icon { transform: scale(1.05); }
+        .benefit-item h3 { font-family: 'Montserrat', sans-serif; font-size: 24px; font-weight: 800; margin-bottom: 20px; }
+        .benefit-item p { font-family: 'Nunito Sans', sans-serif; font-size: 16px; line-height: 1.8; color: rgba(255, 255, 255, 0.55); }
+        @media (max-width: 1024px) {
+            .benefits-grid { grid-template-columns: repeat(2, 1fr); gap: 60px; }
+            .benefits-header { margin: 0 0 80px 0; }
+        }
+        @media (max-width: 768px) {
+            .benefits-grid { grid-template-columns: 1fr; gap: 50px; }
+        }
+    </style>
+
+    <!-- CLEAN CTA SECTION -->
+    <section class="cta-container">
+        <div class="cta-box">
+            <h2 class="cta-title">Let's Grow Your Business Together</h2>
+            <p class="cta-subtitle">Stop worrying about compliance and start focusing on your vision.</p>
+            <a href="#contact" class="cta-button">Get Free Consultation</a>
+        </div>
+    </section>
+
+    <style>
+        .cta-container { background-color: #000000; padding: 100px 10%; display: flex; justify-content: center; align-items: center; }
+        .cta-box { background-color: #FF0000; width: 100%; max-width: 1100px; padding: 90px 60px; border-radius: 32px; text-align: left; border: none; }
+        .cta-subtitle { font-family: 'Nunito Sans', sans-serif; font-size: 20px; color: #ffffff; margin-bottom: 50px; font-weight: 400; opacity: 0.95; }
+        .cta-button { display: inline-block; background-color: #ffffff; color: #000000; font-family: 'Montserrat', sans-serif; font-size: 18px; font-weight: 700; text-decoration: none; padding: 22px 50px; border-radius: 12px; transition: all 0.3s ease; border: 2px solid #ffffff; }
+        .cta-button:hover { background-color: #000000; color: #ffffff; border-color: #000000; }
+        @media (max-width: 768px) {
+            .cta-box { padding: 60px 25px; border-radius: 24px; }
+            .cta-button { padding: 18px 35px; width: 100%; text-align: center; }
+        }
+    </style>
+
+    <!-- CONTACT SECTION -->
+    <section id="contact" class="contact-section">
+        <div class="contact-container">
+            <!-- Left Side: Contact Details -->
+            <div class="contact-info">
+                <h2 class="contact-title">Contact <span class="highlight-red">Us</span></h2>
+                <div class="info-list">
+                    <div class="info-item">
+                        <div class="info-icon">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path><circle cx="12" cy="10" r="3"></circle></svg>
+                        </div>
+                        <div class="info-text">
+                            <h4>Office Address</h4>
+                            <p>Narmada Solution, Gayathripuram (Near Saibaba Temple), Mysore, Karnataka - 570019</p>
+                        </div>
+                    </div>
+                    <div class="info-item">
+                        <div class="info-icon">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.75 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path></svg>
+                        </div>
+                        <div class="info-text">
+                            <h4>Phone Number</h4>
+                            <p>0821 245 0899</p>
+                        </div>
+                    </div>
+                    <div class="info-item">
+                        <div class="info-icon">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path><polyline points="22,6 12,13 2,6"></polyline></svg>
+                        </div>
+                        <div class="info-text">
+                            <h4>Email Address</h4>
+                            <p>solutionsnarmada@gmail.com</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Right Side: Contact Form -->
+            <div class="contact-form-box">
+                <form action="#">
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label>Name</label>
+                            <input type="text" placeholder="John Doe" required>
+                        </div>
+                        <div class="form-group">
+                            <label>Email</label>
+                            <input type="email" placeholder="john@example.com" required>
+                        </div>
+                    </div>
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label>Phone</label>
+                            <input type="tel" placeholder="+91 ...">
+                        </div>
+                        <div class="form-group">
+                            <label>Service Required</label>
+                            <select required>
+                                <option value="" disabled selected>Select a Service</option>
+                                <option value="epf">EPF & ESI Services</option>
+                                <option value="dsc">Digital Signature</option>
+                                <option value="data">Data Entry</option>
+                                <option value="web">Web Development</option>
+                                <option value="ecommerce">E-commerce Development</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="form-group full-width">
+                        <label>Message</label>
+                        <textarea rows="5" placeholder="How can we help?"></textarea>
+                    </div>
+                    <button type="submit" class="submit-btn">Send Message</button>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <style>
+        .contact-section { background-color: #000000; padding: 120px 10%; color: #ffffff; }
+        .contact-container { display: flex; justify-content: space-between; align-items: flex-start; gap: 80px; max-width: 1400px; margin: 0 auto; }
+        .contact-info { flex: 1; }
+        .info-list { display: flex; flex-direction: column; gap: 35px; }
+        .info-item { display: flex; align-items: center; gap: 25px; }
+        .info-icon { width: 60px; height: 60px; background-color: #0c0c0c; border: 1px solid rgba(255, 255, 255, 0.1); border-radius: 12px; display: flex; align-items: center; justify-content: center; color: #FF0000; flex-shrink: 0; }
+        .info-icon svg { width: 28px; height: 28px; }
+        .info-text h4 { font-family: 'Montserrat', sans-serif; font-size: 18px; font-weight: 700; margin-bottom: 5px; }
+        .info-text p { font-family: 'Nunito Sans', sans-serif; font-size: 16px; color: rgba(255, 255, 255, 0.6); }
+        .contact-form-box { flex: 1.5; background-color: #0c0c0c; padding: 60px; border-radius: 24px; border: 1px solid rgba(255, 255, 255, 0.05); }
+        .form-row { display: flex; gap: 25px; margin-bottom: 25px; }
+        .form-group { flex: 1; display: flex; flex-direction: column; gap: 10px; }
+        .form-group label { font-family: 'Montserrat', sans-serif; font-size: 14px; font-weight: 600; color: rgba(255, 255, 255, 0.8); }
+        .form-group input, .form-group select, .form-group textarea { background-color: #000000; border: 1px solid rgba(255, 255, 255, 0.15); border-radius: 10px; padding: 15px 18px; color: #ffffff; font-family: 'Nunito Sans', sans-serif; font-size: 16px; outline: none; transition: all 0.3s ease; }
+        .form-group input:focus, .form-group select:focus, .form-group textarea:focus { border-color: #FF0000; }
+        .full-width { margin-bottom: 35px; }
+        .submit-btn { width: 100%; background-color: #FF0000; color: #ffffff; font-family: 'Montserrat', sans-serif; font-size: 18px; font-weight: 800; padding: 20px; border: none; border-radius: 12px; cursor: pointer; transition: all 0.3s ease; }
+        .submit-btn:hover { background-color: #ffffff; color: #000000; transform: translateY(-3px); }
+        select { appearance: none; background-image: url("data:image/svg+xml;charset=UTF-8,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='white' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3e%3cpolyline points='6 9 12 15 18 9'%3e%3c/polyline%3e%3c/svg%3e"); background-repeat: no-repeat; background-position: right 1rem center; background-size: 1em; }
+        @media (max-width: 1024px) {
+            .contact-container { flex-direction: column; gap: 60px; }
+            .contact-form-box { padding: 40px; width: 100%; }
+        }
+        @media (max-width: 600px) {
+            .form-row { flex-direction: column; }
+            .contact-section { padding: 80px 5%; }
+        }
+    </style>
+
+    <!-- ULTRA-THIN DIVIDER LINE -->
+    <div class="footer-thin-line"></div>
+
+    <!-- FOOTER SECTION -->
+    <footer class="narmada-footer">
+        <div class="footer-max-width">
+            <div class="footer-main-grid">
+                <!-- Column 1: The Brand -->
+                <div class="footer-column brand-info">
+                    <a href="javascript:void(0);" class="footer-logo">narmadasolution<span>.com</span></a>
+                    <p class="footer-bio">
+                        Leading the way in business compliance and digital transformation. We simplify complex processes so you can focus on growth.
+                    </p>
+                </div>
+
+                <!-- Column 2: Our Services -->
+                <div class="footer-column">
+                    <h4 class="footer-heading">Services</h4>
+                    <ul class="footer-nav-list">
+                        <li><a href="javascript:void(0);">Compliance (EPF & ESI)</a></li>
+                        <li><a href="javascript:void(0);">Digital Signature</a></li>
+                        <li><a href="javascript:void(0);">Web Development</a></li>
+                        <li><a href="javascript:void(0);">E-commerce Solutions</a></li>
+                        <li><a href="javascript:void(0);">Data Management</a></li>
+                    </ul>
+                </div>
+
+                <!-- Column 3: Quick Links -->
+                <div class="footer-column">
+                    <h4 class="footer-heading">Company</h4>
+                    <ul class="footer-nav-list">
+                        <li><a href="javascript:void(0);">About Our Mission</a></li>
+                        <li><a href="javascript:void(0);">Contact Support</a></li>
+                        <li><a href="javascript:void(0);">Privacy Policy</a></li>
+                        <li><a href="javascript:void(0);">Terms of Service</a></li>
+                    </ul>
+                </div>
+
+                <!-- Column 4: Stay Connected -->
+                <div class="footer-column social-integration">
+                    <h4 class="footer-heading">Stay Connected</h4>
+                    <div class="social-wrapper">
+                      
+                        <a href="tel:0821 245 0899" class="social-btn" aria-label="Call">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+        <path d="M22 16.92v3a2 2 0 0 1-2.18 2
+                 19.79 19.79 0 0 1-8.63-3.07
+                 19.5 19.5 0 0 1-6-6
+                 19.79 19.79 0 0 1-3.07-8.67
+                 A2 2 0 0 1 4.11 2h3
+                 a2 2 0 0 1 2 1.72
+                 c.12.89.33 1.76.63 2.6
+                 a2 2 0 0 1-.45 2.11L8.09 9.91
+                 a16 16 0 0 0 6 6
+                 l1.48-1.2
+                 a2 2 0 0 1 2.11-.45
+                 c.84.3 1.71.51 2.6.63
+                 A2 2 0 0 1 22 16.92z">
+        </path>
+    </svg>
+</a>
+                        
+                        <a href="mailto:solutionsnarmada@gmail.com" class="social-btn" aria-label="Gmail">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path><polyline points="22,6 12,13 2,6"></polyline></svg>
+                        </a>
+
+
+                    </div>
+                    <p class="legal-copy">© narmadasolution.com<br>All rights reserved.</p>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <style>
+        .footer-thin-line { height: 1px; width: 100%; background-color: rgba(255, 255, 255, 0.15); margin: 0; }
+        .narmada-footer { background-color: #000000; color: #ffffff; padding: 100px 0 80px 0; font-family: 'Nunito Sans', sans-serif; }
+        .footer-max-width { max-width: 1300px; margin: 0 auto; padding: 0 5%; }
+        .footer-main-grid { display: grid; grid-template-columns: 1.5fr 1fr 1fr 1.2fr; gap: 60px; }
+        .footer-logo { font-family: 'Montserrat', sans-serif; font-weight: 800; font-size: 28px; color: #ffffff; text-decoration: none; letter-spacing: -0.5px; display: block; margin-bottom: 25px; }
+        .footer-logo span { color: #FF0000; }
+        .footer-bio { font-size: 16px; line-height: 1.8; color: rgba(255, 255, 255, 0.5); max-width: 320px; }
+        .footer-heading { font-family: 'Montserrat', sans-serif; font-size: 18px; font-weight: 700; color: #ffffff; margin-bottom: 35px; position: relative; }
+        .footer-heading::after { content: ''; position: absolute; left: 0; bottom: -10px; width: 25px; height: 2px; background-color: #FF0000; }
+        .footer-nav-list { list-style: none; padding: 0; }
+        .footer-nav-list li { margin-bottom: 18px; }
+        .footer-nav-list li a { text-decoration: none; color: rgba(255, 255, 255, 0.6); font-size: 15px; transition: all 0.3s ease; }
+        .footer-nav-list li a:hover { color: #FF0000; padding-left: 8px; }
+        .social-wrapper { display: flex; gap: 15px; margin-bottom: 40px; }
+        .social-btn { width: 48px; height: 48px; background-color: #0c0c0c; border: 1px solid rgba(255, 255, 255, 0.08); border-radius: 12px; display: flex; align-items: center; justify-content: center; color: #ffffff; transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1); text-decoration: none; }
+        .social-btn svg { width: 22px; height: 22px; }
+        .social-btn:hover { background-color: #FF0000; border-color: #FF0000; transform: translateY(-5px); }
+        .legal-copy { font-size: 14px; line-height: 1.6; color: rgba(255, 255, 255, 0.3); letter-spacing: 0.5px; }
+        @media (max-width: 1100px) { .footer-main-grid { grid-template-columns: repeat(2, 1fr); gap: 50px; } }
+        @media (max-width: 600px) {
+            .footer-main-grid { grid-template-columns: 1fr; text-align: center; }
+            .footer-heading::after { left: 50%; transform: translateX(-50%); }
+            .footer-bio { margin: 0 auto 25px auto; }
+            .social-wrapper { justify-content: center; }
+            .footer-logo { font-size: 24px; }
+        }
+    </style>
+
+    <!-- COUNTING SCRIPT -->
+    <script>
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    const counter = entry.target;
+                    const target = parseInt(counter.getAttribute('data-target'));
+                    let current = 0;
+                    const increment = target / 100;
+                    const update = () => {
+                        current += increment;
+                        if (current < target) {
+                            counter.innerText = Math.ceil(current);
+                            setTimeout(update, 20);
+                        } else {
+                            counter.innerText = target;
+                        }
+                    };
+                    update();
+                    observer.unobserve(counter);
+                }
+            });
+        }, { threshold: 0.8 });
+        document.querySelectorAll('.count').forEach(c => observer.observe(c));
+    </script>
+
+</body>
+</html>
